@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnace SCADA Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>SRF-01 SCADA</h2>
+        <hr>
+        
+        <h3>Quick View</h3>
+        <button id="btn-latest" onclick="fetchLatestCycle()">Load Latest Cycle</button>
+        
+        <hr>
+        
+        <h3>Date Wise Filter</h3>
+        <div class="date-picker-group">
+            <label for="start-date">From Date:</label>
+            <input type="date" id="start-date" class="date-dropdown">
+            
+            <label for="end-date">To Date:</label>
+            <input type="date" id="end-date" class="date-dropdown">
+        </div>
+        
+        <button id="btn-date" onclick="fetchDateRange()">Fetch Date Range</button>
+    </div>
+
+    <div class="main-content">
+        <h1 id="dashboard-title">Thermal Mapping Report</h1>
+        <div id="charts-container"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
